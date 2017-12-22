@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    
+
+    <!-- Room complex type definition -->
+    <xs:complexType name="room">
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="door" type="door"/>
+            <xs:element name="obstacle" type="obstacle"/>
+            <xs:element name="trap" type="trap"/>
+            <xs:element name="treasure" type="treasure">
+        </xs:choice>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="length" type="xs:integer" use="required"/>
+        <xs:attribute name="width" type="xs:integer" use="required"/>
+    </xs:complexType>
+
+    <!-- Door complex type definition -->
+    <xs:complexType name="door">
+        <xs:all>
+            <xs:element name="breakDC" type="xs:integer" default="13"/>
+            <xs:element name="pickDC" type="xs:integer" default="0"/>
+        </xs:all>
+        <xs:attribute name="location" type="xs:string" use="required"/>
+        <xs:attribute name="facing" type="xs:string" use="required"/>
+    </xs:complexType>
+</xs:schema>
