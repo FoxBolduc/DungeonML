@@ -22,7 +22,16 @@
             <xs:element name="pickDC" type="xs:integer" default="0"/>
         </xs:all>
         <xs:attribute name="location" type="xs:string" use="required"/>
-        <xs:attribute name="facing" type="xs:string" use="required"/>
+        <xs:attribute name="facing">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="north"/>
+                    <xs:enumeration value="east"/>
+                    <xs:enumeration value="south"/>
+                    <xs:enumeration value="west"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
     </xs:complexType>
 
     <!-- Obstacle complex type definition -->
