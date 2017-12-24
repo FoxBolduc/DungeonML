@@ -38,7 +38,7 @@
 
     <!-- Obstacle complex type definition -->
     <xs:complexType name="obstacle">
-        <xs:choice maxOccurs="unbounded">
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
             <xs:element name="damage" type="xs:string"/>
             <xs:element name="effect" type="xs:string"/>
             <xs:element name="leadsTo" type="xs:string"/>
@@ -51,7 +51,7 @@
                     <xs:enumeration value="difficult"/>
                     <xs:enumeration value="furniture"/>
                     <xs:enumeration value="water"/>
-                    <xs:enumeration value="damaging"
+                    <xs:enumeration value="hazard"
                     <xs:enumeration value="stairs"/>
                 </xs:restriction>
             </xs:simpleType>
