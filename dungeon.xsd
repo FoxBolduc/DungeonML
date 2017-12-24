@@ -22,7 +22,8 @@
             <xs:element name="pickDC" type="xs:integer" default="0"/>
         </xs:all>
         <xs:attribute name="location" type="xs:string" use="required"/>
-        <xs:attribute name="facing">
+        <xs:attribute name="leadsTo" type="xs:string" use="required"/>
+        <xs:attribute name="facing" use="required">
             <xs:simpleType>
                 <xs:restriction base="xs:string">
                     <xs:enumeration value="north"/>
@@ -35,4 +36,26 @@
     </xs:complexType>
 
     <!-- Obstacle complex type definition -->
+    <xs:complexType name="obstacle">
+        <xs:choice maxOccurs="unbounded">
+            <xs:element name="damage" type="xs:string"/>
+            <xs:element name="effect" type="xs:string"/>
+        </xs:choice>
+        <xs:attribute name="location" type="xs:string" use="required"/>
+        <xs:attribute name="type" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="solid"/>
+                    <xs:enumeration value="difficult"/>
+                    <xs:enumeration value="furniture"/>
+                    <xs:enumeration value="water"/>
+                    <xs:enumeration value="damaging"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!-- Trap complex type definition -->
+
+    <!-- Treasure complex type definition -->
 </xs:schema>
