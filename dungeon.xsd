@@ -63,4 +63,8 @@
     </xs:complexType>
 
     <!-- Treasure complex type definition -->
+        <xs:complexType name="treasure">
+            <xs:attribute name="name" type="xs:string" use="required"/>
+            <xs:attribute name="value" type="xs:integer"/>
+        </xs:complexType>
 </xs:schema>
