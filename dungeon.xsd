@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="UTF-8">
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="dungeon" type="dungeon"/>
+
+    <!-- Dungeon complex type definition -->
+    <xs:complexType name="dungeon">
+        <xs:choice maxOccurs="unbounded">
+            <xs:element name="floor" type="floor"/>
+        </xs:choice>
+        <xs:attribute name="name" type="xs:string"/>
+    </xs:complexType>
+
+    <!-- Floor complex type definition -->
+    <xs:complexType name="floor">
+        <xs:choice maxOccurs="unbounded">
+            <xs:element name="room" type="room"/>
+        </xs:choice>
+        <xs:attribute name="name" type="xs:string"/>
+    </xs:complexType>
     
 
     <!-- Room complex type definition -->
@@ -7,7 +25,6 @@
         <xs:choice minOccurs="0" maxOccurs="unbounded">
             <xs:element name="door" type="door"/>
             <xs:element name="obstacle" type="obstacle"/>
-            <xs:element name="trap" type="trap"/>
             <xs:element name="treasure" type="treasure">
         </xs:choice>
         <xs:attribute name="name" type="xs:string" use="required"/>
@@ -22,6 +39,49 @@
             <xs:element name="pickDC" type="xs:integer" default="0"/>
         </xs:all>
         <xs:attribute name="location" type="xs:string" use="required"/>
-        <xs:attribute name="facing" type="xs:string" use="required"/>
+        <xs:attribute name="leadsTo" type="xs:string" use="required"/>
+        <xs:attribute name="openning" type="xs:boolean" default="false"/>
+        <xs:attribute name="facing" type="xs:string" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="north"/>
+                    <xs:enumeration value="east"/>
+                    <xs:enumeration value="south"/>
+                    <xs:enumeration value="west"
+                    <xs:enumeration value="whole"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
     </xs:complexType>
+
+    <!-- Obstacle complex type definition -->
+    <xs:complexType name="obstacle">
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="damage" type="xs:string"/>
+            <xs:element name="effect" type="xs:string"/>
+            <xs:element name="perceptionDC" type="xs:integer"/>
+            <xs:element name="trapType" type="xs:integer"/>
+            <xs:element name="disableDC" type="xs:integer"/>
+        </xs:choice>
+        <xs:attribute name="location" type="xs:string" use="required"/>
+        <xs:attribute name="type" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="solid"/>
+                    <xs:enumeration value="difficult"/>
+                    <xs:enumeration value="furniture"/>
+                    <xs:enumeration value="water"/>
+                    <xs:enumeration value="hazard"/>
+                    <xs:enumeration value="stairs"/>
+                    <xs:enumeration vlue="trap"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!-- Treasure complex type definition -->
+        <xs:complexType name="treasure">
+            <xs:attribute name="name" type="xs:string" use="required"/>
+            <xs:attribute name="value" type="xs:integer"/>
+        </xs:complexType>
 </xs:schema>
