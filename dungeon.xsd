@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="UTF-8">
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="dungeon" type="dungeon"/>
+
+    <!-- Dungeon complex type definition -->
+    <xs:complexType name="dungeon">
+        <xs:choice maxOccurs="unbounded">
+            <xs:element name="floor" type="floor"/>
+        </xs:choice>
+        <xs:attribute name="name" type="xs:string"/>
+    </xs:complexType>
+
+    <!-- Floor complex type definition -->
+    <xs:complexType name="floor">
+        <xs:choice maxOccurs="unbounded">
+            <xs:element name="room" type="room"/>
+        </xs:choice>
+        <xs:attribute name="name" type="xs:string"/>
+    </xs:complexType>
     
 
     <!-- Room complex type definition -->
@@ -7,7 +25,6 @@
         <xs:choice minOccurs="0" maxOccurs="unbounded">
             <xs:element name="door" type="door"/>
             <xs:element name="obstacle" type="obstacle"/>
-            <xs:element name="trap" type="trap"/>
             <xs:element name="treasure" type="treasure">
         </xs:choice>
         <xs:attribute name="name" type="xs:string" use="required"/>
