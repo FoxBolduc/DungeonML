@@ -25,7 +25,7 @@
         <xs:choice minOccurs="0" maxOccurs="unbounded">
             <xs:element name="door" type="door"/>
             <xs:element name="obstacle" type="obstacle"/>
-            <xs:element name="treasure" type="treasure">
+            <xs:element name="treasure" type="treasure"/>
         </xs:choice>
         <xs:attribute name="name" type="xs:string" use="required"/>
         <xs:attribute name="length" type="xs:integer" use="required"/>
