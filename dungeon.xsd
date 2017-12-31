@@ -40,14 +40,14 @@
         </xs:all>
         <xs:attribute name="location" type="xs:string" use="required"/>
         <xs:attribute name="leadsTo" type="xs:string" use="required"/>
-        <xs:attribute name="openning" type="xs:boolean" default="false"/>
-        <xs:attribute name="facing" type="xs:string" use="required">
+        <xs:attribute name="opening" type="xs:boolean" default="false"/>
+        <xs:attribute name="facing" use="required">
             <xs:simpleType>
                 <xs:restriction base="xs:string">
                     <xs:enumeration value="north"/>
                     <xs:enumeration value="east"/>
                     <xs:enumeration value="south"/>
-                    <xs:enumeration value="west"
+                    <xs:enumeration value="west"/>
                     <xs:enumeration value="whole"/>
                 </xs:restriction>
             </xs:simpleType>
@@ -73,7 +73,7 @@
                     <xs:enumeration value="water"/>
                     <xs:enumeration value="hazard"/>
                     <xs:enumeration value="stairs"/>
-                    <xs:enumeration vlue="trap"/>
+                    <xs:enumeration value="trap"/>
                 </xs:restriction>
             </xs:simpleType>
         </xs:attribute>
