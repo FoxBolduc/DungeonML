@@ -60,8 +60,9 @@
             <xs:element name="damage" type="xs:string"/>
             <xs:element name="effect" type="xs:string"/>
             <xs:element name="perceptionDC" type="xs:integer"/>
-            <xs:element name="trapType" type="xs:integer"/>
+            <xs:element name="trapType" type="xs:String"/>
             <xs:element name="disableDC" type="xs:integer"/>
+            <xs:element name="disableSkill" type="xs:String"/>
         </xs:choice>
         <xs:attribute name="location" type="xs:string" use="required"/>
         <xs:attribute name="type" use="required">
