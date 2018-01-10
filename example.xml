@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<dungeon xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="dungeon.xsd">
+    <floor name="floor 1">
+        <room name="square" length="4" width="4">
+            <door location="D3" facing="whole" leadsTo="attic"/>
+            <obstacle location="D3" type="stairs"/>
+            <door location="A1-A4" facing="west" leadsTo="hallway" opening="true"/>
+        </room>
+
+        <room name="hallway" length="9" width="2">
+            <obstacle type="trap" location="A2-B2, A5-B5">
+                <damage>3d4 Piercing</damage>
+                <trapType>Spikes</trapType>
+                <perceptionDC>18</perceptionDC>
+                <disableDC>24</disableDC>
+                <disableSkill>Disable Device</disableSkill>
+            </obstacle>
+
+            <door location="A1-B1" facing="south" leadsTo="walkway">
+                <breakDC>20</breakDC>
+                <pickDC>25</pickDC>
+            </door>
+        </room>
+
+        <room name="garden" length="5" width="4" noWalls="true">
+            <obstacle location="B3-D4" type="water">
+                <effect>It's wet</effect>
+            </obstacle>
+        </room>
+
+        <room name="walkway" length="4" width="4">
+            <obstacle location="B1-C4" type="difficult"/>
+            <obstacle location="A1, D1" type="solid"/>
+            <obstacle location="A3, D3" type="hazard">
+                <damage>1d4 fire</damage>
+            </obstacle>
+
+            <door location="D4" facing="north" opening="true"/>
+        </room>
+    </floor>
+    <floor name="floor 2">
+        <room name="attic" length="4" width="4">
+            <obstacle location="A2-A3" type="furniture"/>
+        </room>
+    </floor>
+</dungeon>
